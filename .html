@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEA WALK | Walk. Sip. Refresh.</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #071710;
+      --bg-card: rgba(13, 34, 25, 0.78);
+      --bg-card-hover: rgba(20, 48, 36, 0.95);
+      --gold-primary: #D4AF37;
+      --gold-light: #F9E29B;
+      --gold-gradient: linear-gradient(135deg, #ECC872 0%, #D4AF37 50%, #A67C1E 100%);
+      --text-main: #FFFFFF;
+      --text-muted: #B8C7BF;
+      --border-gold: rgba(212, 175, 55, 0.25);
+      --accent-glow: rgba(212, 175, 55, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(20, 60, 40, 0.5) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(18, 48, 35, 0.4) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(7, 23, 16, 0.85);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 1rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #0e3020 0%, #071710 100%);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .brand-logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .btn-nav-order {
+      padding: 8px 18px;
+      border-radius: 30px;
+      background: var(--gold-gradient);
+      color: #071710;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-nav-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 3px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gold-light);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      max-width: 650px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      border-radius: 30px;
+      background: var(--gold-gradient);
+      color: #071710;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-secondary {
+      padding: 14px 30px;
+      border-radius: 30px;
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(212, 175, 55, 0.12);
+      transform: translateY(-3px);
+    }
+
+    /* Highlights Section */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold-primary);
+    }
+
+    .highlight-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: var(--gold-primary);
+    }
+
+    .highlight-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .highlight-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Headers */
+    .section-title-wrap {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+
+    .section-pretitle {
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold-gradient);
+      margin: 0 auto 15px;
+      border-radius: 2px;
+    }
+
+    /* Menu Section */
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 5% 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-gold);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .menu-category-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .menu-item-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #E2ECE6;
+    }
+
+    .menu-item-price {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold-primary);
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+    /* First Branch Showcase */
+    .branch-section {
+      background: linear-gradient(180deg, transparent, rgba(13, 34, 25, 0.6) 50%, transparent);
+      padding: 5rem 5%;
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .branch-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .branch-image-wrap {
+      position: relative;
+      min-height: 380px;
+      background: #0f241a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .branch-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .branch-details {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .branch-badge {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .branch-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold-primary);
+      margin-bottom: 1rem;
+    }
+
+    .branch-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .branch-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .branch-info-icon {
+      color: var(--gold-primary);
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    /* Franchise Banner */
+    .franchise-section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .franchise-box {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(13, 34, 25, 0.85) 100%);
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .franchise-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+
+    .franchise-phone {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 2px;
+      margin: 1rem 0 1.5rem;
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background: #040d09;
+      border-top: 1px solid var(--border-gold);
+      padding: 4rem 5% 2rem;
+    }
+
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 3rem;
+    }
+
+    .footer-about p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+      max-width: 400px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-gold);
+      border-radius: 30px;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: var(--gold-gradient);
+      color: #071710;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .branch-card {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="brand-logo">
+      <div class="brand-logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 44 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+      </div>
+      <span class="brand-logo-text">TEA WALK</span>
+    </a>
+    <nav>
+      <a href="#menu">Our Menu</a>
+      <a href="#branch">First Branch</a>
+      <a href="#franchise">Franchise</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:9963191219" class="btn-nav-order">Call: 9963191219</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>✦</span> Premium Aesthetic Cafe Experience
+    </div>
+    <h1 class="hero-title">TEA WALK</h1>
+    <p class="hero-tagline">Walk. Sip. Refresh.</p>
+    <p class="hero-desc">
+      Indulge in authentic Turkish sand-brewed tea, refreshing mocktails, signature milkshakes, and delicious hot savory bites served in a warm, welcoming outdoor ambience.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">
+        <span>Explore Menu</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#branch" class="btn-secondary">Visit First Branch</a>
+      <a href="tel:9963191219" class="btn-secondary">Franchise Enquiry</a>
+    </div>
+  </section>
+
+  <!-- Key Highlights -->
+  <section class="highlights">
+    <div class="highlight-card">
+      <div class="highlight-icon">☕</div>
+      <h3 class="highlight-title">Authentic Sand Brews</h3>
+      <p class="highlight-desc">Traditional Sand Tea and Sand Coffee slow-brewed on golden heated sand for deep aromatic flavor.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🍃</div>
+      <h3 class="highlight-title">Fresh Mocktails & Mojitos</h3>
+      <p class="highlight-desc">Chilled, revitalizing crushed-mint mojitos, fruity blends, and exotic pea flower infusions.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">✨</div>
+      <h3 class="highlight-title">Evening Warmth & Ambience</h3>
+      <p class="highlight-desc">Comfortable seating under radiant fairy lights designed for relaxation with friends and family.</p>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <div class="section-title-wrap">
+      <p class="section-pretitle">Handcrafted Offerings</p>
+      <h2 class="section-title">The Master Menu</h2>
+      <div class="section-divider"></div>
+      <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">Made with fresh dairy, natural ingredients, and authentic spices.</p>
+    </div>
+
+    <div class="menu-container">
+      
+      <!-- Category: TEA'S -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Tea's</h3>
+          <span style="color: var(--gold-primary);">🫖</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Dum Tea</span><span class="menu-item-price">₹20</span></div>
+          <div class="menu-item"><span class="menu-item-name">Tandoori Chai Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Ginger Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Masala Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Elaichi Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Lemon Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Black Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Green Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Ginger Lemon Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Bellam Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Bellam Ginger Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Pepper Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Sonti Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Special Tea</span><span class="menu-item-price">₹30</span></div>
+          <div class="menu-item"><span class="menu-item-name">Kullad Tea</span><span class="menu-item-price">₹35</span></div>
+          <div class="menu-item"><span class="menu-item-name">Sand Tea (Turkish)</span><span class="menu-item-price">₹50</span></div>
+        </div>
+      </div>
+
+      <!-- Category: COFFEE & MILK -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Coffee & Milk</h3>
+          <span style="color: var(--gold-primary);">☕</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Coffee</span><span class="menu-item-price">₹35</span></div>
+          <div class="menu-item"><span class="menu-item-name">Black Coffee</span><span class="menu-item-price">₹25</span></div>
+          <div class="menu-item"><span class="menu-item-name">Bellam Coffee</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Cold Coffee</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Plain Milk</span><span class="menu-item-price">₹25</span></div>
+          <div class="menu-item"><span class="menu-item-name">Badam Milk</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Horlicks</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Bournvita</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Boost</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Sonti Milk</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Sand Coffee (Turkish)</span><span class="menu-item-price">₹80</span></div>
+        </div>
+      </div>
+
+      <!-- Category: MOJITOS -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Mojitos</h3>
+          <span style="color: var(--gold-primary);">🍸</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Classic Mint Mojito</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Lemon Mint Mojito</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Green Apple Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Blue Lagoon Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Watermelon Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Strawberry Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Mango Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Passion Fruit Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Kiwi Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Pineapple Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Orange Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Blackcurrant Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Virgin Mojito</span><span class="menu-item-price">₹99</span></div>
+          <div class="menu-item"><span class="menu-item-name">Pea Flower Mojito</span><span class="menu-item-price">₹100</span></div>
+        </div>
+      </div>
+
+      <!-- Category: MILKSHAKES -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Milkshakes</h3>
+          <span style="color: var(--gold-primary);">🥤</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Vanilla Milkshake</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Chocolate Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Strawberry Milkshake</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Mango Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Pista Milkshake</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Apple Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Black Currant Milkshake</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Pineapple Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Litchi Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Butterscotch Milkshake</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Blueberry Milkshake</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Oreo Milkshake</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">King of Shake</span><span class="menu-item-price">₹100</span></div>
+        </div>
+      </div>
+
+      <!-- Category: SAMOSA & HOT SNACKS -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Samosa & Hot Snacks</h3>
+          <span style="color: var(--gold-primary);">🥟</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Regular Samosa</span><span class="menu-item-price">₹10</span></div>
+          <div class="menu-item"><span class="menu-item-name">Onion Samosa</span><span class="menu-item-price">₹15</span></div>
+          <div class="menu-item"><span class="menu-item-name">Sweetcorn Samosa</span><span class="menu-item-price">₹15</span></div>
+          <div class="menu-item"><span class="menu-item-name">Veg Spring Roll</span><span class="menu-item-price">₹40</span></div>
+          <div class="menu-item"><span class="menu-item-name">Egg Kulfi</span><span class="menu-item-price">₹50</span></div>
+        </div>
+      </div>
+
+      <!-- Category: SANDWICHES & FRIES -->
+      <div class="menu-category">
+        <div class="menu-category-header">
+          <h3 class="menu-category-title">Sandwiches & Fries</h3>
+          <span style="color: var(--gold-primary);">🥪</span>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="menu-item-name">Veg Sandwich</span><span class="menu-item-price">₹50</span></div>
+          <div class="menu-item"><span class="menu-item-name">Cheese Veg Sandwich</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Corn Cheese Sandwich</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Paneer Sandwich</span><span class="menu-item-price">₹170</span></div>
+          <div class="menu-item"><span class="menu-item-name">Grilled Veg Sandwich</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Chicken Sandwich</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Cheese Chicken Sandwich</span><span class="menu-item-price">₹100</span></div>
+          <div class="menu-item"><span class="menu-item-name">French Fries</span><span class="menu-item-price">₹60</span></div>
+          <div class="menu-item"><span class="menu-item-name">Masala Fries</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-item"><span class="menu-item-name">Peri Peri Fries</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-item"><span class="menu-item-name">Cheese Fries</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-item"><span class="menu-item-name">Loaded Cheese Fries</span><span class="menu-item-price">₹100</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- First Branch Section -->
+  <section id="branch" class="branch-section">
+    <div class="branch-card">
+      <div class="branch-image-wrap">
+        <img src="https://uploads.onecompiler.io/44muwes4k/1792402049568/WhatsApp%20Image%202026-10-19%20at%202.54.50%20PM.jpeg" alt="TEA WALK First Branch Cafe Ambience" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80'" />
+      </div>
+      <div class="branch-details">
+        <span class="branch-badge">Our Flagship Location</span>
+        <h2 class="branch-heading">TEA WALK — First Branch</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Step into our signature cafe setting featuring rustic outdoor wooden seating, warm evening lights, and freshly prepared refreshments in a calm environment.
+        </p>
+
+        <div class="branch-info-list">
+          <div class="branch-info-item">
+            <span class="branch-info-icon">📍</span>
+            <div>
+              <strong style="color: #fff;">Address & Landmark:</strong><br>
+              HFVH+6J2, Hyderabad, Kandlakoya,Beside Dhyana Sai Petrol Mart, Telangana 500100
+            </div>
+          </div>
+          <div class="branch-info-item">
+            <span class="branch-info-icon">🕒</span>
+            <div>
+              <strong style="color: #fff;">Timings:</strong><br>
+              Open Daily: 5:00 AM – 11:00 PM
+            </div>
+          </div>
+          <div class="branch-info-item">
+            <span class="branch-info-icon">📞</span>
+            <div>
+              <strong style="color: #fff;">Branch Contact:</strong><br>
+              +91 9963191219
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://maps.app.goo.gl/n7g9vGxySzE5CqccA?g_st=aw" target="_blank" class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+            Get Directions
+          </a>
+          <a href="https://wa.me/919963191219?text=Hello%20Tea%20Walk,%20I%20would%20like%20to%20visit%20your%20cafe!" target="_blank" class="btn-secondary" style="padding: 10px 22px; font-size: 0.9rem;">
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Franchise Section -->
+  <section id="franchise" class="franchise-section">
+    <div class="franchise-box">
+      <span class="hero-badge">Business Opportunity</span>
+      <h2 class="franchise-title">Partner With TEA WALK</h2>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+        Join our rapidly growing tea franchise network. We provide complete setup guidance, standard raw materials, authentic recipes, and operational support.
+      </p>
+      
+      <a href="tel:9963191219" class="franchise-phone">
+        📞 +91 9963191219
+      </a>
+      
+      <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <a href="tel:9963191219" class="btn-primary">Call For Franchise</a>
+        <a href="https://wa.me/919963191219?text=Hello%20Tea%20Walk,%20I%20am%20interested%20in%20a%20franchise%20partnership" target="_blank" class="btn-secondary">Inquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div class="footer-about">
+        <a href="#" class="brand-logo" style="margin-bottom: 12px;">
+          <div class="brand-logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              <line x1="6" y1="1" x2="6" y2="4"></line>
+              <line x1="10" y1="1" x2="10" y2="4"></line>
+              <line x1="14" y1="1" x2="14" y2="4"></line>
+            </svg>
+          </div>
+          <span class="brand-logo-text">TEA WALK</span>
+        </a>
+        <p>Walk. Sip. Refresh. Experience authentic kulhad & sand teas, chilled artisanal coolers, and fresh gourmet snacks made to order.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#menu">Full Menu & Pricing</a></li>
+          <li><a href="#branch">First Branch Showcase</a></li>
+          <li><a href="#franchise">Franchise Inquiry</a></li>
+          <li><a href="tel:9963191219">Customer Helpline</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 15px;">Follow our daily stories and updates on our official social channel:</p>
+        
+        <!-- Official Instagram Button -->
+        <a href="https://www.instagram.com/teawalk1?obrf=MWYweTBtc3N5aWh1dQ==" target="_blank" rel="noopener noreferrer" class="social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>@teawalk1</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 TEA WALK. All Rights Reserved. Walk. Sip. Refresh.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
