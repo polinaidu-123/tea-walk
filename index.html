@@ -74,6 +74,16 @@
       justify-content: center;
       background: radial-gradient(circle, #0e3020 0%, #071710 100%);
       box-shadow: 0 0 15px var(--accent-glow);
+      overflow: hidden; /* ensures image stays inside the circle */
+    }
+
+    /* NEW: style for the logo image inside the circular container */
+    .brand-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
     }
 
     .brand-logo-text {
@@ -553,6 +563,67 @@
       color: var(--text-muted);
     }
 
+    /* ===== FSSAI LICENSE BADGE (bottom-left) ===== */
+    .fssai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .fssai-badge:hover {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.14);
+    }
+
+    .fssai-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--gold-primary);
+      background: radial-gradient(circle, #0e3020 0%, #071710 100%);
+      color: var(--gold-primary);
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+    }
+
+    .fssai-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.35;
+    }
+
+    .fssai-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .fssai-number {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.6px;
+    }
+
+    .fssai-number strong {
+      color: #FFFFFF;
+    }
+
     /* Responsive */
     @media (max-width: 860px) {
       .branch-card {
@@ -573,13 +644,8 @@
   <header>
     <a href="#" class="brand-logo">
       <div class="brand-logo-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 8h1a4 44 0 0 1 0 8h-1"></path>
-          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-          <line x1="6" y1="1" x2="6" y2="4"></line>
-          <line x1="10" y1="1" x2="10" y2="4"></line>
-          <line x1="14" y1="1" x2="14" y2="4"></line>
-        </svg>
+        <!-- Replaced SVG with your logo image -->
+        <img src="https://uploads.onecompiler.io/44muwes4k/1792407985807/WhatsApp%20Image%202026-10-02%20at%207.44.34%20A.jpeg" alt="TEA WALK Logo" />
       </div>
       <span class="brand-logo-text">TEA WALK</span>
     </a>
@@ -851,17 +917,21 @@
       <div class="footer-about">
         <a href="#" class="brand-logo" style="margin-bottom: 12px;">
           <div class="brand-logo-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-              <line x1="6" y1="1" x2="6" y2="4"></line>
-              <line x1="10" y1="1" x2="10" y2="4"></line>
-              <line x1="14" y1="1" x2="14" y2="4"></line>
-            </svg>
+            <!-- Replaced SVG with your logo image (footer) -->
+            <img src="https://uploads.onecompiler.io/44muwes4k/1792407985807/WhatsApp%20Image%202026-10-02%20at%207.44.34%20A.jpeg" alt="TEA WALK Logo" />
           </div>
           <span class="brand-logo-text">TEA WALK</span>
         </a>
         <p>Walk. Sip. Refresh. Experience authentic kulhad & sand teas, chilled artisanal coolers, and fresh gourmet snacks made to order.</p>
+
+        <!-- ===== FSSAI LICENSE (bottom-left) ===== -->
+        <div class="fssai-badge">
+          <div class="fssai-icon">F</div>
+          <div class="fssai-text">
+            <span class="fssai-label">FSSAI License</span>
+            <span class="fssai-number">Registration Number: <strong>23626029004338</strong></span>
+          </div>
+        </div>
       </div>
 
       <div class="footer-col">
